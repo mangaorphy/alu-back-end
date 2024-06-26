@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 
 """
-This script retrieves an employee's todo list from the JSONPlaceholder API, calculates the number of completed tasks,
-and prints the employee's name, the number of completed tasks, and the titles of the completed tasks.
+This script retrieves an employee's todo list from the JSONPlaceholder API,
+ calculates the number
+ of completed tasks,
+and prints the employee's name, the number of completed tasks, and the titles
+ of the completed tasks.
 
-The script takes the employee ID as a command-line argument and uses it to fetch the employee's details and todo list fr
+The script takes the employee ID as a command-line argument and uses
+ it to fetch the employee's details and todo list fr
 the JSONPlaceholder API.
 """
 
@@ -37,18 +41,24 @@ if __name__ == "__main__":
     # Get the todo list for the employee
     EMPLOY_TODO = requests.get(BASE_URL + f"/users/{USER_ID}/todos").json()
 
-    # Initialize a dictionary to store the todo items and their completion status
+    # Initialize a dictionary to store the todo items and their completion
+    # status
     TOTAL_NUMBER_OF_TASKS = {}
 
-    # Iterate through the todo list and add the title and completion status to the dictionary
+    # Iterate through the todo list and add the title and completion status to
+    # the dictionary
     for todo in EMPLOY_TODO:
-        TOTAL_NUMBER_OF_TASKS.update({todo.get("title"): todo.get("completed")})
+        TOTAL_NUMBER_OF_TASKS.update(
+            {todo.get("title"): todo.get("completed")})
 
     # Calculate the number of completed tasks
-    NUMBER_OF_DONE_TASKS = len([k for k, v in TOTAL_NUMBER_OF_TASKS.items() if v is True])
+    NUMBER_OF_DONE_TASKS = len(
+        [k for k, v in TOTAL_NUMBER_OF_TASKS.items() if v is True])
 
-    # Print the employee's name, the number of completed tasks, and the total number of tasks
-    print("Employee {} is done with tasks({}/{}): ".format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, len(TOTAL_NUMBER_OF_TASKS)))
+    # Print the employee's name, the number of completed tasks, and the total
+    # number of tasks
+    print("Employee {} is done with tasks({}/{}): ".format(EMPLOYEE_NAME,
+          NUMBER_OF_DONE_TASKS, len(TOTAL_NUMBER_OF_TASKS)))
 
     # Iterate through the todo list and print the titles of the completed tasks
     for key, val in TOTAL_NUMBER_OF_TASKS.items():

@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 
 """
-This script retrieves an employee's todo list from the JSONPlaceholder API, calculates the number of completed tasks,
-and prints the employee's name, the number of completed tasks, and the titles of the completed tasks.
+This script retrieves an employee's todo list from the JSONPlaceholder API,
+ calculates the number of completed tasks,
+and prints the employee's name, the number of completed tasks, and the titles
+ of the completed tasks.
 
-The script takes the employee ID as a command-line argument and uses it to fetch the employee's details and todo list fr
+The script takes the employee ID as a command-line argument and uses it to fetch
+the employee's details and todo list fr
 the JSONPlaceholder API.
 """
 
@@ -44,7 +47,8 @@ if __name__ == "__main__":
 
     # Iterate through the todo list and add the data to the CSV data list
     for todo in employee_todos:
-        csv_data.append([USER_ID, USERNAME, str(todo.get("completed")), todo.get("title")])
+        csv_data.append([USER_ID, USERNAME, str(
+            todo.get("completed")), todo.get("title")])
 
     # Export the data to a CSV file
     csv_file_name = f"{USER_ID}.csv"
