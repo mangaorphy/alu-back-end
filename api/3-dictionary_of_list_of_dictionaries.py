@@ -58,7 +58,8 @@ if __name__ == "__main__":
         USERNAME = employee.get("username")
 
         # Get the todo list for the current employee
-        employee_todos = requests.get(BASE_URL + f"users/{USER_ID}/todos").json()
+        employee_todos = requests.get(
+            BASE_URL + f"users/{USER_ID}/todos").json()
 
         # Add the employee's todo list to the JSON data structure
         json_data[USER_ID] = []
