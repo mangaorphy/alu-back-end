@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     # Iterate through the todo list and add the data to the CSV data list
     for todo in employee_todos:
-        csv_data.append([USER_ID, USERNAME, str(
+        csv_data.append([str(USER_ID), USERNAME, str(
             todo.get("completed")), todo.get("title")])
 
     # Export the data to a CSV file
