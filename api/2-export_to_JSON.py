@@ -13,7 +13,7 @@ uses it to fetch
 the employee's details and todo list fr
 the JSONPlaceholder API.
 """
-import csv
+import json
 import requests
 import sys
 
@@ -46,15 +46,16 @@ if __name__ == "__main__":
     employee_todos = requests.get(BASE_URL + f"users/{USER_ID}/todos").json()
 
     # Initialize a list to store the CSV data
-    csv_data = []
-
-    # Iterate through the todo list and add the data to the CSV data list
+    json_data = {USER_ID: []}
+    # Export the data to a JSON file
     for todo in employee_todos:
-        csv_data.append([str(USER_ID), USERNAME, str(
-            todo.get("completed")), todo.get("title")])
+        json_data[USER_ID].append({
+            "task": todo.get("title"),
+            "completed": todo.get("completed"),
+            "username": USERNAME
+        })
 
-    # Export the data to a CSV file
-    csv_file_name = f"{USER_ID}.csv"
-    with open(csv_file_name, 'w', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_NONNUMERIC)
-        csv_writer.writerows(csv_data)
+    json_file_name = f"{USER_ID}.json"
+    with open(json_file_name, 'w') as json_file:
+
+        json.dump(json_data, json_file)

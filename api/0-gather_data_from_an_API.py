@@ -11,9 +11,9 @@ The script takes the employee ID as a command-line argument and uses
  it to fetch the employee's details and todo list fr
 the JSONPlaceholder API.
 """
-
-import sys
 import requests
+import sys
+
 
 if __name__ == "__main__":
     """
